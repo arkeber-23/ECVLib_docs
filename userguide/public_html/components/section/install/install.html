@@ -1,0 +1,91 @@
+<style>
+    pre {
+        position: relative;
+        top: 5px;
+        height: 25px;
+        margin-bottom: 0; /* Ajustar el margen inferior a 0 para evitar espacios entre elementos */
+    }
+
+    code {
+        background-color: #f8f9fa;
+        border: 1px solid #ced4da;
+        padding: 1px 5px;
+        border-radius: 5px;
+    }
+
+    /* Alinea los botones a la derecha */
+    .btn-container {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .btn-perzonalizado {
+        margin-left: 10px; /* Ajusta el margen entre botones */
+    }
+</style>
+<div class="pagetitle">
+    <h1>Instalación!</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Instalación</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section dashboard">
+    <div class="row">
+        <!-- Left side columns -->
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Instalación de ECVLib con Composer</h1>
+                    <p>Para instalar el framework utilizando Composer, ejecuta el siguiente comando:</p>
+
+                    <!-- Contenedor para alinear botones a la derecha -->
+                    <div class="btn-container">
+                        <pre><code id="composerECVLib">composer create-project arkeber-23/ecvlib nombre_proyecto</code></pre>
+                        <button type="button" class="copy-composer-install btn btn-outline-info btn-sm btn-perzonalizado" onclick="copyECVLib('composerECVLib', 'copy-composer-install')">Copiar</button>
+                    </div>
+
+                    <p>Este comando descargará e instalará el framework del proyecto.</p>
+
+                    <p>Para iniciar el servidor use la línea de comando:</p>
+
+                    <!-- Contenedor para alinear botones a la derecha -->
+                    <div class="btn-container">
+                        <pre><code id="phpServe">php thor serve</code></pre>
+                        <button type="button" class="copy-start-server btn btn-outline-info btn-sm btn-perzonalizado" onclick="copyECVLib('phpServe', 'copy-start-server')">Copiar</button>
+                    </div>
+
+                    <p>Servidor iniciado en: <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>, a evaluación de los puertos disponibles.</p>
+
+                    <p>Para más información, consulta la documentación oficial de Composer:</p>
+                    <p><a href="https://getcomposer.org/" target="_blank">Documentación de Composer</a></p>
+                </div>
+            </div>
+        </div><!-- End Left side columns -->
+    </div>
+</section>
+
+<script>
+    function copyECVLib(elementId, buttonId) {
+        var textToCopy = document.getElementById(elementId).innerText;
+
+        // Resto del código para copiar al portapapeles, si es necesario
+        var clipboard = new ClipboardJS('.' + buttonId, {
+            text: function () {
+                return textToCopy;
+            }
+        });
+
+        clipboard.on('success', function (e) {
+            //Comando copiado al portapapeles
+            e.clearSelection();
+        });
+
+        clipboard.on('error', function (e) {
+            //Error al intentar copiar al portapapeles. Puedes intentar seleccionar y copiar manualmente.
+        });
+    }
+</script>
